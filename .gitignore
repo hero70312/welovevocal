@@ -1,0 +1,28 @@
+/config.js
+package-lock.json
+yarn.lock
+gen/**/*
+temp.js
+__attic__/**/*
+
+# OSX
+#
+.DS_Store
+
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# jetbrain IDE
+.idea
+
+#log files
+access-*
+error-*
+
+nohup.out
+
+# download files
+other/testing/andrew/aws-s3/files/*
