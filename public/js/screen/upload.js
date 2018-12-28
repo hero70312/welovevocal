@@ -19,33 +19,33 @@ function getFormat(fileName) {
 $(document).ready(function () {
 
     const uploadClick = async function () {
-        //
-        // if (!$('#songName').val()) {
-        //     swal({
-        //         type: 'error',
-        //         title: 'Oops...',
-        //         text: '請輸入歌名',
-        //     })
-        //     return;
-        // }
-        //
-        // if (!$('#userName').val()) {
-        //     swal({
-        //         type: 'error',
-        //         title: 'Oops...',
-        //         text: '請輸入使用者名稱',
-        //     })
-        //     return;
-        // }
-        //
-        // if (!$('#audioFile').get(0).files[0]) {
-        //     swal({
-        //         type: 'error',
-        //         title: 'Oops...',
-        //         text: '請上傳詩歌',
-        //     })
-        //     return;
-        // }
+
+        if (!$('#songName').val()) {
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                text: '請輸入歌名',
+            })
+            return;
+        }
+
+        if (!$('#userName').val()) {
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                text: '請輸入使用者名稱',
+            })
+            return;
+        }
+
+        if (!$('#audioFile').get(0).files[0]) {
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                text: '請上傳詩歌',
+            })
+            return;
+        }
 
         // $.blockUI({message: '<h1><img src="http://res.cloudinary.com/uecare/image/upload/v1531128438/oriact/Spinner-1s-200px.gif" /> <br>資料上傳中...</h1>'});
 
