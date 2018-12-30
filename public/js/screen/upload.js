@@ -55,7 +55,7 @@ $(document).ready(function () {
             return;
         }
 
-        // $.blockUI({message: '<h1><img src="http://res.cloudinary.com/uecare/image/upload/v1531128438/oriact/Spinner-1s-200px.gif" /> <br>資料上傳中...</h1>'});
+        $.blockUI({message: '<h6><img src="https://res.cloudinary.com/dh62scrmq/image/upload/c_scale,h_53/v1546158363/sys/Spinner-1s-200px.gif" /> <br>上傳中...</h6>'});
 
         let audioFileBase64 = await getBase64($('#audioFile').get(0).files[0]);
         let audioFileFileName = $('#audioFile').get(0).files[0].name;
@@ -88,7 +88,7 @@ $(document).ready(function () {
                     "success"
                 )
 
-                // $.unblockUI();
+                $.unblockUI();
             },
             error: function (err) {
                 console.log('err=', err);
@@ -97,7 +97,7 @@ $(document).ready(function () {
                     err.responseJSON.message,
                     "error"
                 );
-                // $.unblockUI();
+                $.unblockUI();
             }
         });
 
@@ -112,7 +112,7 @@ $(document).ready(function () {
                 text: err.message,
                 type: "error"
             });
-            // $.unblockUI();
+            $.unblockUI();
         });
     });
 });
