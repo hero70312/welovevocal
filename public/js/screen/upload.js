@@ -11,12 +11,20 @@ async function getBase64(file) {
     });
 }
 
+Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
+
 function getFormat(fileName) {
     var extension = fileName.substr( (fileName.lastIndexOf('.') +1) );
    return extension;
 };
 
 $(document).ready(function () {
+
+    $('#worshipDate').val(new Date().toDateInputValue());
 
     const uploadClick = async function () {
 
@@ -54,16 +62,18 @@ $(document).ready(function () {
         let fileFormat = getFormat(audioFileFileName);
         let songName = $('#songName').val();
         let userName = $('#userName').val();
+        let worshipDate = $('#worshipDate').val();
 
         let obj = {
             songName,
             userName,
             audioFileBase64,
             audioFileFileName,
-            fileFormat
+            fileFormat,
+            worshipDate
         };
 
-        console.log(fileFormat);
+        console.log(obj);
 
         $.ajax({
             type: 'POST',

@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', errorWrapper(async (req, res) => {
 
-    const {userName, audioFileBase64, audioFileFileName, fileFormat, songName} = req.body;
+    const {userName, audioFileBase64, audioFileFileName, fileFormat, songName, worshipDate} = req.body;
 
 
     const {sharedUrl: url} = await new GoogleDriveService().uploadFile({
@@ -18,7 +18,8 @@ router.post('/', errorWrapper(async (req, res) => {
         fileBase64: audioFileBase64,
         userName: userName,
         fileFormat,
-        songName
+        songName,
+        worshipDate
     });
 
 

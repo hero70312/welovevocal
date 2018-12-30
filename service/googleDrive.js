@@ -20,15 +20,15 @@ const oauth2Client = getOauth2Client();
 
 class GoogleDriveService {
 
-    async uploadFile({fileBase64, fileName, userName, fileFormat, songName}) {
+    async uploadFile({fileBase64, fileName, userName, fileFormat, songName, worshipDate}) {
 
         fs.writeFileSync(`audio/${fileFormat}.${fileFormat}`, fileBase64.replace(/^data:.*;base64,/, ''), 'base64');
-
+        worshipDate.replace(/-/gm,'');
 
         const drive = google.drive({version: 'v3', auth: oauth2Client});
 
         let fileMetadata = {
-            name: `${songName}-${userName}.${fileFormat}`,
+            name: `${worshipDate}-${songName}-${userName}.${fileFormat}`,
             parents: ['1ReBbwE1PeI_ufqpe5WFaRDgpMkHaOf18']
         };
 
