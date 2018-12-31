@@ -24,6 +24,13 @@ function getFormat(fileName) {
 
 $(document).ready(function () {
 
+    $('#refAudio').click(async function () {
+        window.open(
+            'https://drive.google.com/drive/folders/1FA7H5RA0kHAvED71fA9jpS6wdl_vyUSo?usp=sharing',
+            '_blank' // <- This is what makes it open in a new window.
+        );
+    });
+
     $('#worshipDate').val(new Date().toDateInputValue());
 
     const uploadClick = async function () {
