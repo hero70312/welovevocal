@@ -24,7 +24,7 @@ router.post('/', errorWrapper(async (req, res) => {
         worshipDate
     });
 
-    const token = 'xoxb-517965447158-516568923570-RodgTJ3qH1JgXi2VWBWczetx';
+    const token = 'xoxb-517965447158-516568923570-HvZQrnB3FpYANtXAXgyZEZjF';//xoxb-517965447158-516568923570-HvZQrnB3FpYANtXAXgyZEZjF
     const web = new WebClient(token);
     const conversationId = "CF5RMMK88";
     let message = "";
