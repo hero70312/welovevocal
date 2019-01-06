@@ -24,9 +24,9 @@ router.post('/', errorWrapper(async (req, res) => {
         worshipDate
     });
 
-    const token = slackConfig.botToken;
+    const token = 'xoxb-517965447158-516568923570-IyJ61rx1jxGh9VY5FVGR7Ddf';
     const web = new WebClient(token);
-    const conversationId = slackConfig.weLoveVocal;
+    const conversationId = "CF5RMMK88";
     let message = "";
     message += `*${userName}* 上傳了 *${songName}* 錄音檔囉!`;
     web.chat.postMessage({ channel: conversationId, text: message, mrkdwn:true,  attachments: [
@@ -40,7 +40,6 @@ router.post('/', errorWrapper(async (req, res) => {
             }
         ] })
         .then((res) => {
-            // `res` contains information about the posted message
             console.log('Message sent: ', res.ts);
         })
         .catch(console.error);
