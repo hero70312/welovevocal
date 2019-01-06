@@ -24,7 +24,8 @@ router.post('/', errorWrapper(async (req, res) => {
         worshipDate
     });
 
-    const web = new WebClient(slackConfig.botToken);
+    const token = slackConfig.botToken;
+    const web = new WebClient(token);
     const conversationId = slackConfig.weLoveVocal;
     let message = "";
     message += `*${userName}* 上傳了 *${songName}* 錄音檔囉!`;
