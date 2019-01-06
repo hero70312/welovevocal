@@ -2,8 +2,11 @@
 
 const router = require('express').Router();
 const GoogleDriveService = require("../service/googleDrive");
+const slackConfig = require("../constants/constant").slack;
+const { WebClient } = require('@slack/client');
+
 const errorWrapper = require('../utils/errorWrapper');
-//
+
 router.get('/', async (req, res) => {
     res.redirect('/index.html');
 });
@@ -11,7 +14,6 @@ router.get('/', async (req, res) => {
 router.post('/', errorWrapper(async (req, res) => {
 
     const {userName, audioFileBase64, audioFileFileName, fileFormat, songName, worshipDate} = req.body;
-
 
     const {sharedUrl: url} = await new GoogleDriveService().uploadFile({
         fileName: audioFileFileName,
@@ -21,6 +23,26 @@ router.post('/', errorWrapper(async (req, res) => {
         songName,
         worshipDate
     });
+
+    const web = new WebClient(slackConfig.botToken);
+    const conversationId = slackConfig.weLoveVocal;
+    let message = "";
+    message += `*${userName}* 上傳了 *${songName}* 錄音檔囉!`;
+    web.chat.postMessage({ channel: conversationId, text: message, mrkdwn:true,  attachments: [
+            {
+                "fallback": "ReferenceError - UI is not defined: https://honeybadger.io/path/to/event/",
+                "text": "<https://drive.google.com/open?id=1ReBbwE1PeI_ufqpe5WFaRDgpMkHaOf18|前往雲端硬碟>",
+                "thumb_url": "https://res.cloudinary.com/uecare/image/upload/c_scale,w_235/v1546617752/systemUse/1000px-Googledrive_logo.svg_.png",
+                "footer": "WeLoveVocal",
+                "footer_icon": "https://res.cloudinary.com/dh62scrmq/image/upload/v1546251887/sys/micnew.png",
+                "color": "#009df3"
+            }
+        ] })
+        .then((res) => {
+            // `res` contains information about the posted message
+            console.log('Message sent: ', res.ts);
+        })
+        .catch(console.error);
 
 
     res.json({url});

@@ -8,6 +8,9 @@
   },
   "dependencies": {
     "@line/bot-sdk": "^5.0.0",
+    "@log4js-node/slack": "^1.0.0",
+    "@slack/client": "^4.8.0",
+    "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.3",
     "googleapis": "^27.0.0",
