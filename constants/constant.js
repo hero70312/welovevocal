@@ -25,7 +25,7 @@ const config = {
     },
     slack: {
         slackEndpoint: 'https://slack.com/api/chat.postMessage',
-        botToken: 'xoxb-517965447158-516568923570-oLrmnarQ8B1S774qNb0KzPlL',
+        botToken: 'xoxp-517965447158-516563710610-516400878708-50be996338de6355383591a00835fc9d',
         weLoveVocal: 'CF5RMMK88'
     },
 };
