@@ -22,7 +22,12 @@ const config = {
     line:{
         channelAccessToken: 'gOMQj8Pnd70xqcnXf8vLXngiGiDjTYRD/E4yVVGFKNdw7NuTL8r5e5PE52OoopXW+AXo3ikuiAOZlbhX0Ho3jB3V6OjN17XwpNrvcwV9xZvAINwrSTXFXYL0j02ri6eABydyMDuqxub4b3GUCshcBQdB04t89/1O/w1cDnyilFU=',
         channelSecret: '240565389320d52d465935a8d45759f3',
-    }
+    },
+    slack: {
+        slackEndpoint: 'https://slack.com/api/chat.postMessage',
+        botToken: 'xoxb-517965447158-516568923570-GsR2Xue5V6xzoc63b2YEGGzZ',
+        weLoveVocal: 'CF5RMMK88'
+    },
 };
 
 module.exports = config;
