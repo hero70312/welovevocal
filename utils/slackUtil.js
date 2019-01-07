@@ -8,12 +8,23 @@ const bot_token = slackConfig.botToken;
 
 // 參考資料 : https://api.slack.com/methods/chat.postMessage
 const slackUtil = {
-    postMessage: async function ({text = 'slack api test',channel='', attachments}) {
+    postMessage: async function ({ text = 'slack api test', channel=''}) {
         // attachments : [{"pretext": "pre-hello", "text": "text-world"}]
         const data = {
             channel,
             text,
-            username: 'testing bot'
+            mrkdwn: true,
+            username: 'vocal-bot',
+            attachments: [
+                {
+                    "fallback": "ReferenceError - UI is not defined: https://honeybadger.io/path/to/event/",
+                    "text": "<https://drive.google.com/open?id=1ReBbwE1PeI_ufqpe5WFaRDgpMkHaOf18|前往雲端硬碟>",
+                    "thumb_url": "https://res.cloudinary.com/uecare/image/upload/c_scale,w_235/v1546617752/systemUse/1000px-Googledrive_logo.svg_.png",
+                    "footer": "WeLoveVocal",
+                    "footer_icon": "https://res.cloudinary.com/dh62scrmq/image/upload/v1546251887/sys/micnew.png",
+                    "color": "#009df3"
+                }
+            ]
         };
 
         const config = {
@@ -31,22 +42,6 @@ const slackUtil = {
         } else {
             throw response;
         }
-
-        /*************************   sample response  ***********************
-         {
-            "ok": true,
-            "channel": "C93DE254K",
-            "ts": "1529490236.000226",
-            "message": {
-                "text": "slack-api test",
-                "username": "Slack API Tester",
-                "bot_id": "BBA37LK7A",
-                "type": "message",
-                "subtype": "bot_message",
-                "ts": "1529490236.000226"
-            }
-         }
-         *******************************************************************/
     }
 };
 
