@@ -4,7 +4,7 @@ const axios = require('axios');
 const slackConfig = require("../constants/constant").slack;
 
 const slack_url = slackConfig.slackEndpoint;
-const bot_token = slackConfig.botToken;
+const bot_token = process.env.SLACK_TOKEN;
 
 // 參考資料 : https://api.slack.com/methods/chat.postMessage
 const slackUtil = {
