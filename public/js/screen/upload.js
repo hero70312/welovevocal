@@ -35,6 +35,15 @@ $(document).ready(function () {
 
     const uploadClick = async function () {
 
+        if (!$('#checkPractice').is(":checked")) {
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                text: '要做基本功喔～（有的話要打勾勾）',
+            })
+            return;
+        }
+
         if (!$('#songName').val()) {
             swal({
                 type: 'error',
@@ -43,6 +52,7 @@ $(document).ready(function () {
             })
             return;
         }
+
 
         if (!$('#userName').val()) {
             swal({
