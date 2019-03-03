@@ -2,15 +2,25 @@
 
 const router = require('express').Router();
 const GoogleDriveService = require("../service/googleDrive");
+const GoogleSheetService = require("../service/googleSheet");
 const slackConfig = require("../constants/constant").slack;
 const slackUtil = require("../utils/slackUtil");
-const { WebClient } = require('@slack/client');
+const {WebClient} = require('@slack/client');
+const songNames = require('../constants/constant').songNames;
 
 const errorWrapper = require('../utils/errorWrapper');
 
 router.get('/', async (req, res) => {
     res.redirect('/index.html');
 });
+
+router.get('/songData', errorWrapper(async (req,res) => {
+    let rows = await new GoogleSheetService().getSheetData({
+        spreadsheetId: songNames.spreadsheetId,
+        range: songNames.range
+    });
+    res.json({data:rows});
+}));
 
 router.post('/', errorWrapper(async (req, res) => {
 
@@ -29,8 +39,8 @@ router.post('/', errorWrapper(async (req, res) => {
     // const token = 'xoxp-517965447158-516563710610-518641517223-79e50ade4b3e5f9efd3cde72a59e8550';
     // const web = new WebClient(token);
     // const conversationId = "CF5RMMK88";
-    let message = "";
-    message += `*${userName}* 上傳了 *${songName}* 錄音檔囉!`;
+    // let message = "";
+    // message += `*${userName}* 上傳了 *${songName}* 錄音檔囉!`;
     // web.chat.postMessage({ channel: conversationId, text: message, mrkdwn:true,  attachments: [
     //         {
     //             "fallback": "ReferenceError - UI is not defined: https://honeybadger.io/path/to/event/",
@@ -46,7 +56,7 @@ router.post('/', errorWrapper(async (req, res) => {
     //     })
     //     .catch(console.error);
 
-    let a = await slackUtil.postMessage({text: message,channel: slackConfig.channel});
+    // let a = await slackUtil.postMessage({text: message,channel: slackConfig.channel});
 
     res.json({url});
 

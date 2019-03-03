@@ -24,6 +24,9 @@ function getFormat(fileName) {
 
 $(document).ready(function () {
 
+
+
+
     let cookieUserName = Cookies.get('userName');
     $('#userName').val(cookieUserName);
 
@@ -140,4 +143,24 @@ $(document).ready(function () {
             $.unblockUI();
         });
     });
+
+
+
+});
+
+$.ajax({
+    type: 'GET',
+    url: 'upload/songData',
+    contentType: 'application/json',
+    success: function (res) {
+        let availableSongs = res.data.map((arr)=>{
+            return arr[0];
+        })
+        $( "#songName" ).autocomplete({
+            source: availableSongs
+        });
+        console.log(availableSongs);
+    },
+    error: function (err) {
+    }
 });
