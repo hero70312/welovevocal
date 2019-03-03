@@ -24,6 +24,9 @@ function getFormat(fileName) {
 
 $(document).ready(function () {
 
+    let cookieUserName = Cookies.get('userName');
+    $('#userName').val(cookieUserName);
+
     $('#refAudio').click(async function () {
         window.open(
             'https://drive.google.com/drive/folders/1FA7H5RA0kHAvED71fA9jpS6wdl_vyUSo?usp=sharing',
@@ -34,6 +37,8 @@ $(document).ready(function () {
     $('#worshipDate').val(new Date().toDateInputValue());
 
     const uploadClick = async function () {
+
+        Cookies.set('userName', $('#userName').val(), { expires: 366 });
 
         if (!$('#checkPractice').is(":checked")) {
             swal({
@@ -89,6 +94,9 @@ $(document).ready(function () {
             fileFormat,
             worshipDate
         };
+
+        $('#songName').val("");
+        $('#audioFile').val("");
 
         console.log(obj);
 
