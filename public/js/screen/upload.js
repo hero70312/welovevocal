@@ -159,7 +159,6 @@ $.ajax({
         $( "#songName" ).autocomplete({
             source: availableSongs
         });
-        console.log(availableSongs);
     },
     error: function (err) {
     }
