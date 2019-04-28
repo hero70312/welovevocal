@@ -26,3 +26,5 @@ nohup.out
 
 # download files
 other/testing/andrew/aws-s3/files/*
+
+audio/
